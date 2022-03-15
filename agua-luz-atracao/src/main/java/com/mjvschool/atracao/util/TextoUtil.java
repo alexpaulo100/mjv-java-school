@@ -31,7 +31,7 @@ public class TextoUtil {
         String novaString = somenteNumeros(textoOriginal);
         novaString = ajustar(novaString, tamanhoMaximo);
         return novaString;
-    }
+    } 
 
     public static String preencherSomenteNumeros(String textoOriginal, int tamanhoMaximo, boolean esquerda){
         String novaString = somenteNumeros(textoOriginal);
