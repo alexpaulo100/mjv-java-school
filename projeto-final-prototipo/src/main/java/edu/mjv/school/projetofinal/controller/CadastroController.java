@@ -14,24 +14,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.mjv.school.projetofinal.model.Cadastro;
-import edu.mjv.school.projetofinal.service.CadastroService;
+import edu.mjv.school.projetofinal.repository.CadastroRepository;
 
 @RestController
 @RequestMapping("/cadastros")
 public class CadastroController {
 	@Autowired
-	private CadastroService service;
+	private CadastroRepository repository;
+	
 	@PostMapping
 	public void gravar(@RequestBody Cadastro cadastro) {
 		System.out.println("Gravando registro");
 		System.out.println(cadastro);
-		service.salvar(cadastro);
+		repository.save(cadastro);
 	}
 	@PutMapping()
 	public void alterar(@RequestBody Cadastro cadastro) {
 		System.out.println("Alterando registro");
 		System.out.println(cadastro);
-		//repository.save(cadastro);
 	}
 	@GetMapping(value = "/{id}")
 	public void buscar(@PathVariable("id") Integer id) {

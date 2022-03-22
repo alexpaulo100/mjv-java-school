@@ -3,16 +3,11 @@ package edu.mjv.school.projetofinal.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,19 +23,12 @@ public class Contrato {
 	@Column(name = "dh_contrato")
 	private LocalDateTime dataHora;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_cadastro")
+	//?
 	private Cadastro cadastro;
-	
-	@Embedded
+	//?
 	private Endereco enderecoInstalacao;
-	
-	@OneToMany (cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "id_contrato")
+	//?
 	private List<ContratoServico> servicos;
-	
-	@Column(name = "vl_total")
-	private Double valorTotal;
 	
 	public Integer getId() {
 		return id;
@@ -79,11 +67,5 @@ public class Contrato {
 	}
 	public void setEnderecoInstalacao(Endereco enderecoInstalacao) {
 		this.enderecoInstalacao = enderecoInstalacao;
-	}
-	public Double getValorTotal() {
-		return valorTotal;
-	}
-	public void setValorTotal(Double valorTotal) {
-		this.valorTotal = valorTotal;
 	}
 }

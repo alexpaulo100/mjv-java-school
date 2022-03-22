@@ -1,20 +1,11 @@
 package edu.mjv.school.projetofinal.model;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 @Entity
@@ -25,27 +16,24 @@ public class Cadastro {
 	private Integer id;
 	private String nome;
 	
-	@ElementCollection
-	@JoinColumn(name = "id_cadastro")
+	//?
 	private List<String> emails;
 	
-	@OneToMany(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "id_cadastro")
+	//?
 	private List<Telefone> telefones;
 	
-	@Embedded
+	//?
 	private CadastroLog log; //como salvar o log automaticamente?
 	
-	@Embedded
+	//?
 	private Endereco endereco;
 	
-	@ManyToOne
-	private Profissao profissao;
+	private Integer profissao;
 	
-	public Profissao getProfissao() {
+	public Integer getProfissao() {
 		return profissao;
 	}
-	public void setProfissao(Profissao profissao) {
+	public void setProfissao(Integer profissao) {
 		this.profissao = profissao;
 	}
 	public Integer getId() {
@@ -88,10 +76,5 @@ public class Cadastro {
 	public String toString() {
 		return "Cadastro [id=" + id + ", nome=" + nome + "]";
 	}
-	@PrePersist
-	//@PreUpdate
-	private void logarInclusao() {
-		log = new CadastroLog();
-		log.setDataHoraInclusao(LocalDateTime.now());
-	}
+	
 }

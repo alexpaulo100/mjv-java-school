@@ -15,7 +15,6 @@ public class Telefone {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String numero;
-	
 	@Enumerated(EnumType.STRING)
 	private TelefoneTipo tipo;
 	public Integer getId() {
